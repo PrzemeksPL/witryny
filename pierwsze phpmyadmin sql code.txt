@@ -1,0 +1,58 @@
+Create database (NAZWA)
+
+CREATE TABLE `zdarzenia` (
+  `idZdarzenia` int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  `numer` varchar(100) NOT NULL,
+  `predkosc` int(11) NOT NULL,
+  `data` date NOT NULL,
+  `czas` time NOT NULL
+);
+
+
+
+
+
+
+
+Dodaje do formalurza 
+
+
+INSERT INTO `zdarzenia` (`idZdarzenia`, `numer`, `predkosc`, `data`, `czas`) VALUES
+(1, 'WPR 1234', '72', '2023-09-02', '21:37:34'),
+(2, 'WGM 4567', '72', '2023-09-02', '21:37:34'),
+(3, 'WGM 1223', '72', '2023-09-02', '21:37:34'),
+(4, 'WGT 2233', '72', '2023-09-02', '21:37:34'),
+(5, 'EOP 8900', '72', '2023-09-02', '21:37:34'),
+(6, 'EOP 8904', '72', '2023-09-02', '21:37:34'),
+(7, 'EOP 8945', '72', '2023-09-02', '21:37:34');
+
+
+
+
+
+1. Utworzenie bazy danych wędkowanie
+CREATE DATABASE wedkowanie
+
+2. Utworzenie tabeli ryby - tabel okres_pchronny i lowisko nie możemy teraz utworzyć ponieważ zawierają klucz obcy
+
+CREATE TABLE ryby(
+	id int not null AUTO_INCREMENT,
+	nazwa text not null,
+	wystepowanie text not null,
+	styl_zycia int not null,
+	PRIMARY KEY(id)
+	)
+
+3. Utworzenie tabeli okres_ochronny
+CREATE TABLE okres_ochronny(
+	id int not null AUTO_INCREMENT,
+	od_miesiaca int not null,
+	do_miesiaca int not null,
+	wymiary_ochronny int not null,
+	ryby_id int not null,
+	PRIMARY KEY(id),
+	FOREIGN KEY(ryby_id) REFERENCES ryby(id)
+	)
+
+
+
